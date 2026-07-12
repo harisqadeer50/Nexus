@@ -3,6 +3,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
+const meetingRoutes = require('./routes/meetingRoutes');
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
+app.use('/api/meetings', meetingRoutes);
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Nexus API is running' });
