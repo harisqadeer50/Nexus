@@ -48,6 +48,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: '',
     },
+  balance: {
+  type: Number,
+  default: 0,
+},
 
     // Entrepreneur specific fields
     startupName: {

@@ -9,27 +9,39 @@ export interface User {
   bio: string;
   isOnline?: boolean;
   createdAt: string;
+  balance?: number;
+  location?: string;
+  phone?: string;
+  website?: string;
+  // Entrepreneur fields
+  startupName?: string;
+  startupStage?: string;
+  industry?: string;
+  fundingNeeded?: number;
+  pitchDeck?: string;
+  pitchSummary?: string;
+  foundedYear?: number;
+  teamSize?: number;
+  // Investor fields
+  investmentFocus?: string[];
+  investmentInterests?: string[];
+  investmentStage?: string[];
+  minimumInvestment?: number;
+  maximumInvestment?: number;
+  portfolioCompanies?: string[];
+  preferredStages?: string[];
+  totalInvestments?: number;
+  // Connection fields
+  connections?: string[];
+  pendingRequests?: string[];
 }
 
 export interface Entrepreneur extends User {
   role: 'entrepreneur';
-  startupName: string;
-  pitchSummary: string;
-  fundingNeeded: string;
-  industry: string;
-  location: string;
-  foundedYear: number;
-  teamSize: number;
 }
 
 export interface Investor extends User {
   role: 'investor';
-  investmentInterests: string[];
-  investmentStage: string[];
-  portfolioCompanies: string[];
-  totalInvestments: number;
-  minimumInvestment: string;
-  maximumInvestment: string;
 }
 
 export interface Message {
@@ -66,6 +78,31 @@ export interface Document {
   shared: boolean;
   url: string;
   ownerId: string;
+}
+
+export interface Meeting {
+  _id: string;
+  organizer: User;
+  attendee: User;
+  title: string;
+  description: string;
+  date: string;
+  startTime: string;
+  endTime: string;
+  status: 'pending' | 'accepted' | 'rejected' | 'cancelled';
+  meetingLink?: string;
+}
+
+export interface Transaction {
+  _id: string;
+  sender?: User;
+  receiver?: User;
+  type: 'deposit' | 'withdrawal' | 'transfer';
+  amount: number;
+  status: 'pending' | 'completed' | 'failed';
+  description: string;
+  referenceId: string;
+  createdAt: string;
 }
 
 export interface AuthContextType {
